@@ -37,9 +37,9 @@ def main():
 	# detect contours
 	contours = cv2.findContours(thresh_img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[1]
 
-	# detect colours and shapes
-	colours = ColourDetector(contours, img).colours
+	# detect shapes and colours
 	shapes = ShapeDetector(contours).shapes
+	colours = ColourDetector(contours, img).colours
 
 	# draw results
 	for cnt, c, s in zip(contours, colours, shapes):
