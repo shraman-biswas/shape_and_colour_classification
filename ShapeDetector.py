@@ -63,7 +63,7 @@ class ShapeDetector:
 		if self._sides_equal(poly):
 			return "square" if self._diag_equal(poly) else "rhombus"
 		else:
-			return "rectangle" if self._diag_equal(poly)
+			return "rectangle" if self._diag_equal(poly) \
 				else "parallelogram"
 		return "quadrilateral"
 
@@ -78,7 +78,7 @@ class ShapeDetector:
 		if num_sides == 4:
 			return self._quad_type(polygon)
 		else:
-			return self._shape_names[num_sides]
-				if (num_sides < len(self._shape_names))
+			return self._shape_names[num_sides] \
+				if (num_sides < len(self._shape_names)) \
 				else self._circle_type(cnt)
 

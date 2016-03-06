@@ -20,7 +20,7 @@ def main():
 	print "[ shape and colour classification  ]"
 
 	# load image
-	img = cv2.imread("img2.png")
+	img = cv2.imread("images/img2.png")
 	if img is None:
 		print "image could not be laoded!"
 		sys.exit()
@@ -45,7 +45,7 @@ def main():
 			cv2.putText(img, s, (cx+5, cy+12), cv2.FONT_HERSHEY_SIMPLEX, 0.4, WHITE, 1)
 
 	# display resulting image
-	cv2.imwrite("result.png", img)
+	cv2.imwrite("images/result1.png", img)
 	cv2.imshow("result", img)
 	cv2.waitKey(0)
 
