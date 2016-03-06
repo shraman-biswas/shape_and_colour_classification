@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import sys
+
 from ColourDetector import ColourDetector
 from ShapeDetector import ShapeDetector
 
@@ -19,10 +20,13 @@ def calc_center(cnt):
 def main():
 	print "[ shape and colour classification  ]"
 
+	# get image filname
+	img_filename = sys.argv[1] if len(sys.argv) > 1 else "img1.png"
+
 	# load image
-	img = cv2.imread("images/img2.png")
+	img = cv2.imread("images/%s" % img_filename)
 	if img is None:
-		print "image could not be laoded!"
+		print "image could not be loaded!"
 		sys.exit()
 
 	# extract shapes
@@ -45,7 +49,7 @@ def main():
 			cv2.putText(img, s, (cx+5, cy+12), cv2.FONT_HERSHEY_SIMPLEX, 0.4, WHITE, 1)
 
 	# display resulting image
-	cv2.imwrite("images/result1.png", img)
+	cv2.imwrite("images/result.png", img)
 	cv2.imshow("result", img)
 	cv2.waitKey(0)
 
