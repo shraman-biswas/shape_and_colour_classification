@@ -8,8 +8,8 @@ from ShapeDetector import ShapeDetector
 WHITE = (255,255,255)
 
 
+# calculate contour center from moments
 def calc_center(cnt):
-	# calculate contour center from moments
 	M = cv2.moments(cnt)
 	cx = np.int0(M["m10"] / M["m00"])
 	cy = np.int0(M["m01"] / M["m00"])
@@ -20,12 +20,12 @@ def main():
 	print "[ shape and colour classification  ]"
 
 	# load image
-	img = cv2.imread("img1.png")#("shapes_and_colors.jpg")
+	img = cv2.imread("img2.png")
 	if img is None:
 		print "image could not be laoded!"
 		sys.exit()
 
-	# image processing
+	# extract shapes
 	gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	blur_img = cv2.bilateralFilter(gray_img, 10, 30, 30)
 	thresh_img = cv2.threshold(blur_img, 60, 255, cv2.THRESH_BINARY)[1]
@@ -45,6 +45,7 @@ def main():
 			cv2.putText(img, s, (cx+5, cy+12), cv2.FONT_HERSHEY_SIMPLEX, 0.4, WHITE, 1)
 
 	# display resulting image
+	cv2.imwrite("result.png", img)
 	cv2.imshow("result", img)
 	cv2.waitKey(0)
 
